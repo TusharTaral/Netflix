@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "../axios";
+import React, { useState, useEffect } from "react"
+import axios from "../axios"
 import styles from "./Row.module.css"
-import Youtube from "react-youtube";
+import Youtube from "react-youtube"
 
 const baseImgUrl = "https://image.tmdb.org/t/p/original";
 
 function Row({ title, fetchUrl, isLargeRow }) {
-  const [movies, setMovies] = useState([]);
-  const [trailerUrl, setTrailerUrl] = useState("");
+  const [movies, setMovies] = useState([])
+  const [trailerUrl, setTrailerUrl] = useState("")
 
 
   const opts = {
