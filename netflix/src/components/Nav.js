@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react"
 import styles from "./Nav.module.css"
 
 export default function Nav() {
-  const [show, handleShow] = useState(false);
+  const [show, handleShow] = useState(false)
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
-        handleShow(true);
+        handleShow(true)
       } else {
-        handleShow(false);
+        handleShow(false)
       }
     });
     return () => {
