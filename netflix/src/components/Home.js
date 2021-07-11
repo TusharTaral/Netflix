@@ -12,7 +12,7 @@ export default function Home() {
                     <h2 >Unlimited movies, TV <br />shows and more.</h2>
                     <h3 >Watch anywhere. Cancel anytime.</h3>
                     <h5>Ready to watch? Enter your email to create or restart your membership.</h5>
-                    <input className={styles.input} placeHolder="Enter Email"></input>
+                    <input className={styles.input} placeHolder="Enter Email" required="true"></input>
                     <Link to="/app"><button className={styles.btn}>Get Started  </button></Link>
                 </div>
 

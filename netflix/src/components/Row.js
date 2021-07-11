@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../axios";
-import "./Row.css";
+import styles from "./Row.module.css"
 import Youtube from "react-youtube";
 
 const baseImgUrl = "https://image.tmdb.org/t/p/original";
@@ -37,16 +37,16 @@ function Row({ title, fetchUrl, isLargeRow }) {
   };
 
   return (
-    <div className="row">
+    <div className={styles.row}>
       <h2>{title}</h2>
 
-      <div className="row_posters">
+      <div className={styles.row_posters}>
         {movies.map(
           (movie) =>
             movie.backdrop_path !== null && (
-              <div className="row_container">
+              <div className={styles.row_container}>
                 <img
-                  className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+                  className={`${styles.row_poster} ${isLargeRow && styles.row_posterLarge}`}
                   src={`${baseImgUrl}${isLargeRow ? movie.poster_path : movie.backdrop_path
                     }`}
                   alt={movie.name}
