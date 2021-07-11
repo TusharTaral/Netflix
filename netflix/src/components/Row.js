@@ -9,11 +9,11 @@ function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
 
- 
+
   const opts = {
     height: "700px",
     width: "100%",
-  
+
   };
 
   useEffect(() => {
@@ -45,16 +45,15 @@ function Row({ title, fetchUrl, isLargeRow }) {
           (movie) =>
             movie.backdrop_path !== null && (
               <div className="row_container">
-              <img
-                className={`row_poster ${isLargeRow && "row_posterLarge"}`}
-                src={`${baseImgUrl}${
-                  isLargeRow ? movie.poster_path : movie.backdrop_path
-                }`}
-                alt={movie.name}
-                key={movie.id}
-                onClick={() => handleClick(movie)}
-              ></img>
-               <h3 style={{margin:"10px"}}>  {  movie?.title || movie?.name || movie?.original_name}</h3>
+                <img
+                  className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+                  src={`${baseImgUrl}${isLargeRow ? movie.poster_path : movie.backdrop_path
+                    }`}
+                  alt={movie.name}
+                  key={movie.id}
+                  onClick={() => handleClick(movie)}
+                ></img>
+                <h3 style={{ margin: "10px" }}>  {movie?.title || movie?.name || movie?.original_name}</h3>
               </div>
             )
         )}
