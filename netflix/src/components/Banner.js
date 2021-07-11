@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from "react";
-import Youtube from "react-youtube";
-import axios from "../axios";
-import requests from "../requests";
-import "./Banner.css";
+import React, { useState, useEffect } from "react"
+import Youtube from "react-youtube"
+import axios from "../axios"
+import requests from "../requests"
+import styles from "./Banner.module.css"
 
 function Banner() {
-  const [movie, setMovie] = useState();
-  const [trailerUrl, setTrailerUrl] = useState("");
+  const [movie, setMovie] = useState()
+  const [trailerUrl, setTrailerUrl] = useState("")
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(requests.fetchNetflixOriginals);
       setMovie(
         request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
+        Math.floor(Math.random() * request.data.results.length - 1)
         ]
       );
       return request;
     }
-    fetchData();
+    fetchData()
   }, []);
 
   function truncate(str, n) {
-    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str
   }
   const opts = {
     height: "448px",
     width: "100%",
-    position:"relative",
-    
-  
+    position: "relative",
+
+
   };
   const handleClick = async (movie) => {
     if (trailerUrl) {
@@ -41,10 +41,10 @@ function Banner() {
     }
   };
 
-console.log(movie)
+  console.log(movie)
   return (
     <header
-      className="banner"
+      className={styles.banner}
       style={{
         backgroundSize: "cover",
         backgroundImage: `url("https://image.tmdb.org/t/p/original${movie?.backdrop_path}")`,
@@ -52,26 +52,22 @@ console.log(movie)
       }}
     >
       {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}
-      {/* Background image */}
-      <div className="banner_contents">
-        {/* title */}
-        <h1 className="banner_title">
+      <div className={styles.banner_contents}>
+        <h1 className={styles.banner_title}>
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
 
-        {/* 2 buttons */}
-        <div className="banner_buttons">
-          <button onClick={()=>handleClick(movie)} className="banner_button">Play</button>
-          <button className="banner_button">My List </button>
+        <div className={styles.banner_buttons}>
+          <button onClick={() => handleClick(movie)} className={styles.banner_button}>Play</button>
+          <button className={styles.banner_button}>My List </button>
         </div>
 
-        {/* description */}
-        <h1 className="banner_description">{truncate(movie?.overview, 200)}</h1>
-        
+        <h1 className={styles.banner_description}>{truncate(movie?.overview, 200)}</h1>
+
       </div>
-     
-      <div className="banner_fadeBottom" />
-      
+
+      <div className={styles.banner_fadeBottom} />
+
     </header>
   );
 }
